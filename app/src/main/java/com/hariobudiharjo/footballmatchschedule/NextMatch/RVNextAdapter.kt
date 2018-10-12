@@ -1,4 +1,4 @@
-package com.hariobudiharjo.footballmatchschedule.Adapter
+package com.hariobudiharjo.footballmatchschedule.NextMatch
 
 import android.content.Context
 import android.content.Intent
@@ -7,11 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import com.hariobudiharjo.footballmatchschedule.Activity.DetailActivity
+import com.hariobudiharjo.footballmatchschedule.Detail.DetailActivity
 import com.hariobudiharjo.footballmatchschedule.Model.matchModel
 import com.hariobudiharjo.footballmatchschedule.R
 
-class RVPrevAdapter(var context: Context, var matchs: List<matchModel>) : RecyclerView.Adapter<RVPrevAdapter.ViewHolder>() {
+class RVNextAdapter(var context: Context, var matchs: List<matchModel>) : RecyclerView.Adapter<RVNextAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.rv_list_schedule_item, parent, false)
         return ViewHolder(view)

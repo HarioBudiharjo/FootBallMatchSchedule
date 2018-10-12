@@ -1,22 +1,20 @@
-package com.hariobudiharjo.footballmatchschedule.Adapter
+package com.hariobudiharjo.footballmatchschedule.PrevMatch
 
 import android.content.Context
 import android.content.Intent
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import com.hariobudiharjo.footballmatchschedule.Activity.DetailActivity
-import com.hariobudiharjo.footballmatchschedule.Model.favoriteModel
+import com.hariobudiharjo.footballmatchschedule.Detail.DetailActivity
 import com.hariobudiharjo.footballmatchschedule.Model.matchModel
 import com.hariobudiharjo.footballmatchschedule.R
 
-class RVFavoriteAdapter(var context: Context, var matchs: List<favoriteModel>) : RecyclerView.Adapter<RVFavoriteAdapter.ViewHolder>() {
+class RVPrevAdapter(var context: Context, var matchs: List<matchModel>) : RecyclerView.Adapter<RVPrevAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.rv_list_schedule_item, parent, false)
-        return RVFavoriteAdapter.ViewHolder(view)
+        return ViewHolder(view)
     }
 
     override fun getItemCount(): Int {
@@ -28,7 +26,7 @@ class RVFavoriteAdapter(var context: Context, var matchs: List<favoriteModel>) :
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bindItems(data: favoriteModel) {
+        fun bindItems(data: matchModel) {
 
             val tv_tanggal: TextView = itemView.findViewById(R.id.tv_tanggal)
             val tv_score_home: TextView = itemView.findViewById(R.id.tv_score_home)
@@ -43,9 +41,8 @@ class RVFavoriteAdapter(var context: Context, var matchs: List<favoriteModel>) :
             tv_club_away.text = data.awayTeam
 
             itemView.setOnClickListener({
-                val intent = Intent(it.context, DetailActivity::class.java)
-                intent.putExtra("id", data.idEvent.toString())
-                Log.d("DEBUG", "ID EVENT ${data.idEvent}")
+                var intent = Intent(it.context, DetailActivity::class.java)
+                intent.putExtra("id", data.idEvent)
                 it.context.startActivity(intent)
             })
         }

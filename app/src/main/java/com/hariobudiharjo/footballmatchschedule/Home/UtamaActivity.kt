@@ -1,13 +1,13 @@
-package com.hariobudiharjo.footballmatchschedule.Activity
+package com.hariobudiharjo.footballmatchschedule.Home
 
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentTransaction
 import android.support.v7.app.AppCompatActivity
-import com.hariobudiharjo.footballmatchschedule.Fragment.FavoriteFragment
-import com.hariobudiharjo.footballmatchschedule.Fragment.NextMatchFragment
-import com.hariobudiharjo.footballmatchschedule.Fragment.PrevMatchFragment
+import com.hariobudiharjo.footballmatchschedule.Favorite.FavoriteFragment
+import com.hariobudiharjo.footballmatchschedule.NextMatch.NextMatchFragment
+import com.hariobudiharjo.footballmatchschedule.PrevMatch.PrevMatchFragment
 import com.hariobudiharjo.footballmatchschedule.R
 import kotlinx.android.synthetic.main.activity_utama.*
 

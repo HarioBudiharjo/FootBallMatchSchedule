@@ -11,10 +11,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.DetailActivity" />
         <activity
-            android:name=".Activity.UtamaActivity"
-            android:label="@string/title_activity_utama">
+            android:name=".Detail.DetailActivity"
+            android:theme="@style/AppTheme"></activity>
+        <activity
+            android:name=".Home.UtamaActivity"
+            android:label="@string/title_activity_utama"
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
