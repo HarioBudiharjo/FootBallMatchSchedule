@@ -12,8 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Detail.DetailActivity"
-            android:theme="@style/AppTheme"></activity>
+            android:name=".DetailMatch.DetailActivity"
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".Home.UtamaActivity"
             android:label="@string/title_activity_utama"
@@ -24,6 +24,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".DetailTeam.DetailTeamActivity"
+            android:label="@string/title_activity_detail_team"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".DetailPlayer.DetailPlayerActivity"
+            android:label="@string/title_activity_detail_player"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

@@ -21,6 +21,12 @@ import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 
 class PrevMatchFragment : Fragment(), PrevMatchView {
+
+    var matchs = ArrayList<matchModel>()
+    lateinit var adapter: RVPrevAdapter
+    lateinit var progress: ProgressDialog
+    lateinit var presenter: PrevMatchPresenter
+
     override fun showLoading() {
         progress.show()
     }
@@ -34,10 +40,9 @@ class PrevMatchFragment : Fragment(), PrevMatchView {
         adapter.notifyDataSetChanged()
     }
 
-    var matchs = ArrayList<matchModel>()
-    lateinit var adapter: RVPrevAdapter
-    lateinit var progress: ProgressDialog
-    lateinit var presenter: PrevMatchPresenter
+    companion object {
+        fun prevMatchInstance() : PrevMatchFragment = PrevMatchFragment()
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {

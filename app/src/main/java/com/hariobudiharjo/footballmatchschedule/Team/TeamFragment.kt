@@ -1,31 +1,27 @@
-package com.hariobudiharjo.footballmatchschedule.NextMatch
+package com.hariobudiharjo.footballmatchschedule.Team
 
 
 import android.app.ProgressDialog
-import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import com.google.gson.Gson
-import com.hariobudiharjo.footballmatchschedule.Model.matchModel
-import com.hariobudiharjo.footballmatchschedule.Model.matchResponse
+import com.hariobudiharjo.footballmatchschedule.Model.teamModel
 import com.hariobudiharjo.footballmatchschedule.Network.ApiMatch
 
 import com.hariobudiharjo.footballmatchschedule.R
 
-class NextMatchFragment : Fragment(), NextMatchView {
 
-    private var matchs: MutableList<matchModel> = mutableListOf()
-    lateinit var adapter: RVNextAdapter
+class TeamFragment : Fragment(), TeamView {
+    private var matchs: MutableList<teamModel> = mutableListOf()
+    lateinit var adapter: RVTeamAdapter
     lateinit var progress: ProgressDialog
-    lateinit var presenter: NextMatchPresenter
-
+    lateinit var presenter: TeamPresenter
     override fun showLoading() {
         progress.show()
     }
@@ -34,25 +30,15 @@ class NextMatchFragment : Fragment(), NextMatchView {
         progress.dismiss()
     }
 
-    override fun showDetail(data: MutableList<matchModel>) {
+    override fun showDetail(data: MutableList<teamModel>) {
         matchs.addAll(data)
         adapter.notifyDataSetChanged()
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        Log.d("SKUY","wew")
-    }
-
-    companion object {
-        fun nextMatchInstance() : NextMatchFragment = NextMatchFragment()
-    }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_next_match, container, false)
-
-        val _recyclerView: RecyclerView = view.findViewById(R.id.rv_next_match)
+        val view = inflater.inflate(R.layout.fragment_team, container, false)
+        val _recyclerView: RecyclerView = view.findViewById(R.id.rv_team)
         _recyclerView.layoutManager = LinearLayoutManager(context, LinearLayout.VERTICAL, false)
 
         val request = ApiMatch()
@@ -63,10 +49,10 @@ class NextMatchFragment : Fragment(), NextMatchView {
         progress.setMessage("Wait while loading...")
         progress.setCancelable(false)
 
-        presenter = NextMatchPresenter(this, request, gson)
+        presenter = TeamPresenter(this, request, gson)
         presenter.getNextMatchDetail()
 
-        adapter = RVNextAdapter(context!!, matchs)
+        adapter = RVTeamAdapter(context!!, matchs)
         _recyclerView.adapter = adapter
 
         return view

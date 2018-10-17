@@ -5,10 +5,10 @@ import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentTransaction
 import android.support.v7.app.AppCompatActivity
-import com.hariobudiharjo.footballmatchschedule.Favorite.FavoriteFragment
-import com.hariobudiharjo.footballmatchschedule.NextMatch.NextMatchFragment
-import com.hariobudiharjo.footballmatchschedule.PrevMatch.PrevMatchFragment
+import com.hariobudiharjo.footballmatchschedule.FavoriteEvent.FavoriteFragment
+import com.hariobudiharjo.footballmatchschedule.Match.MatchFragment
 import com.hariobudiharjo.footballmatchschedule.R
+import com.hariobudiharjo.footballmatchschedule.Team.TeamFragment
 import kotlinx.android.synthetic.main.activity_utama.*
 
 class UtamaActivity : AppCompatActivity() {
@@ -23,14 +23,15 @@ class UtamaActivity : AppCompatActivity() {
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.navigation_home -> {
-                currentFragment = PrevMatchFragment()
+//                currentFragment = PrevMatchFragment()
+                currentFragment = MatchFragment.matchInstance()
                 ft = supportFragmentManager.beginTransaction()
                 ft.replace(R.id.fl_main, currentFragment)
                 ft.commit()
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_dashboard -> {
-                currentFragment = NextMatchFragment()
+                currentFragment = TeamFragment()
                 ft = supportFragmentManager.beginTransaction()
                 ft.replace(R.id.fl_main, currentFragment)
                 ft.commit()
@@ -51,7 +52,7 @@ class UtamaActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_utama)
 
-        currentFragment = PrevMatchFragment()
+        currentFragment = MatchFragment()
 
         ft = supportFragmentManager.beginTransaction()
         ft.replace(R.id.fl_main, currentFragment)

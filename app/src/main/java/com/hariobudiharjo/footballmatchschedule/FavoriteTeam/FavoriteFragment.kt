@@ -1,4 +1,4 @@
-package com.hariobudiharjo.footballmatchschedule.Favorite
+package com.hariobudiharjo.footballmatchschedule.FavoriteEvent
 
 
 import android.app.ProgressDialog
@@ -21,7 +21,7 @@ import org.jetbrains.anko.db.select
  * A simple [Fragment] subclass.
  *
  */
-class FavoriteFragment : Fragment() {
+class FavoriteTeamFragment : Fragment() {
 
 
     private var favorites: MutableList<favoriteModel> = mutableListOf()

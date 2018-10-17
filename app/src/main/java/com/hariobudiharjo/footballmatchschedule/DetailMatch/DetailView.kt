@@ -1,4 +1,4 @@
-package com.hariobudiharjo.footballmatchschedule.Detail
+package com.hariobudiharjo.footballmatchschedule.DetailMatch
 
 import com.hariobudiharjo.footballmatchschedule.Model.matchResponse
 

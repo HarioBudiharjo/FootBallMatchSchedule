@@ -1,4 +1,4 @@
-package com.hariobudiharjo.footballmatchschedule.Favorite
+package com.hariobudiharjo.footballmatchschedule.FavoriteEvent
 
 import android.content.Context
 import android.content.Intent
@@ -8,7 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import com.hariobudiharjo.footballmatchschedule.Detail.DetailActivity
+import com.hariobudiharjo.footballmatchschedule.DetailMatch.DetailActivity
 import com.hariobudiharjo.footballmatchschedule.Model.favoriteModel
 import com.hariobudiharjo.footballmatchschedule.R
 

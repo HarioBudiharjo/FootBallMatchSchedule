@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import com.hariobudiharjo.footballmatchschedule.Detail.DetailActivity
+import com.hariobudiharjo.footballmatchschedule.DetailMatch.DetailActivity
 import com.hariobudiharjo.footballmatchschedule.Model.matchModel
 import com.hariobudiharjo.footballmatchschedule.R
 

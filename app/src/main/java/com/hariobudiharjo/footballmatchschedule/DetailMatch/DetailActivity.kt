@@ -1,4 +1,4 @@
-package com.hariobudiharjo.footballmatchschedule.Detail
+package com.hariobudiharjo.footballmatchschedule.DetailMatch
 
 import android.app.ProgressDialog
 import android.database.sqlite.SQLiteConstraintException
@@ -75,7 +75,6 @@ class DetailActivity : AppCompatActivity(), DetailView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
-//        setSupportActionBar(toolbar)
 
         val request = ApiMatch()
         val gson = Gson()
