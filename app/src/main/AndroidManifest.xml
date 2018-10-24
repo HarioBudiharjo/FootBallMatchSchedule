@@ -20,14 +20,15 @@
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".DetailTeam.DetailTeamActivity"
             android:label="@string/title_activity_detail_team"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
         <activity
             android:name=".DetailPlayer.DetailPlayerActivity"
             android:label="@string/title_activity_detail_player"

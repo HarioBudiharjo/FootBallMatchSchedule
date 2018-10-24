@@ -21,7 +21,7 @@ import org.jetbrains.anko.db.select
  * A simple [Fragment] subclass.
  *
  */
-class FavoriteFragment : Fragment() {
+class FavoriteEventFragment : Fragment() {
 
 
     private var favorites: MutableList<favoriteModel> = mutableListOf()

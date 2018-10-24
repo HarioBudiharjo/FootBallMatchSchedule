@@ -1,13 +1,14 @@
 package com.hariobudiharjo.footballmatchschedule.DetailTeam
 
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import android.support.v4.view.ViewPager
-import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AppCompatActivity
+import com.hariobudiharjo.footballmatchschedule.DetailTeam.OverviewTeam.OverviewFragment
+import com.hariobudiharjo.footballmatchschedule.DetailTeam.PlayerTeam.PlayerTeamFragment
 import com.hariobudiharjo.footballmatchschedule.R
 
 import kotlinx.android.synthetic.main.activity_detail_team.*
@@ -31,9 +32,9 @@ class DetailTeamActivity : AppCompatActivity() {
 
 
     private fun setupViewPager(viewPager: ViewPager) {
-        val adapter = ViewPagerAdapter(fragmentManager!!)
-        adapter.addFragment(PrevMatchFragment.prevMatchInstance(), "PAST")
-        adapter.addFragment(NextMatchFragment.nextMatchInstance(), "NEXT")
+        val adapter = ViewPagerAdapter(supportFragmentManager)
+        adapter.addFragment(OverviewFragment(), "PAST")
+        adapter.addFragment(PlayerTeamFragment(), "NEXT")
         viewPager.adapter = adapter
     }
     internal inner class ViewPagerAdapter(manager: FragmentManager) : FragmentPagerAdapter(manager) {
