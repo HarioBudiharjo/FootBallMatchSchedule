@@ -39,7 +39,7 @@ class RVTeamAdapter(var context: Context, var matchs: List<teamModel>) : Recycle
             Glide.with(itemView.context).load(data.strTeamBadge).into(iv_club)
 
             itemView.setOnClickListener({
-                var intent = Intent(it.context, DetailTeamActivity::class.java)
+                val intent = Intent(it.context, DetailTeamActivity::class.java)
                 intent.putExtra("id", data.idTeam)
                 it.context.startActivity(intent)
             })

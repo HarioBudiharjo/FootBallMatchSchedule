@@ -10,22 +10,31 @@
     tools:showIn="@layout/activity_detail_team">
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:id="@+id/ivClubDetailTeam"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center"
+        app:srcCompat="@drawable/arsenal" />
 
     <TextView
+        android:id="@+id/tvNamaDetailTeam"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:text="Barcelona" />
 
     <TextView
+        android:id="@+id/tvTahunDetailTeam"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:text="1997" />
 
     <TextView
+        android:id="@+id/tvStadiunDetailTeam"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:text="Camp Nou" />
 
     <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"

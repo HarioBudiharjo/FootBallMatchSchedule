@@ -1,23 +1,17 @@
 package com.hariobudiharjo.footballmatchschedule.Match
 
-
-import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
 import com.hariobudiharjo.footballmatchschedule.R
 import android.support.v4.app.FragmentPagerAdapter
-import com.hariobudiharjo.footballmatchschedule.Match.MatchFragment.ViewPagerAdapter
 import android.support.v4.view.ViewPager
 import com.hariobudiharjo.footballmatchschedule.NextMatch.NextMatchFragment
 import com.hariobudiharjo.footballmatchschedule.PrevMatch.PrevMatchFragment
 import android.support.design.widget.TabLayout
-import android.util.Log
-
 
 class MatchFragment : Fragment() {
 

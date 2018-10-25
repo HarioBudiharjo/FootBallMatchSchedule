@@ -17,10 +17,6 @@ import com.hariobudiharjo.footballmatchschedule.R
 import org.jetbrains.anko.db.classParser
 import org.jetbrains.anko.db.select
 
-/**
- * A simple [Fragment] subclass.
- *
- */
 class FavoriteEventFragment : Fragment() {
 
 
@@ -59,5 +55,8 @@ class FavoriteEventFragment : Fragment() {
 
     }
 
+    companion object {
+        fun favoriteMatchInstance() : FavoriteEventFragment = FavoriteEventFragment()
+    }
 
 }

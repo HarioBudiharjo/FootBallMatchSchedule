@@ -5,6 +5,7 @@ import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentTransaction
 import android.support.v7.app.AppCompatActivity
+import com.hariobudiharjo.footballmatchschedule.Favorite.FavoriteFragment
 import com.hariobudiharjo.footballmatchschedule.FavoriteEvent.FavoriteEventFragment
 import com.hariobudiharjo.footballmatchschedule.Match.MatchFragment
 import com.hariobudiharjo.footballmatchschedule.R
@@ -38,7 +39,7 @@ class UtamaActivity : AppCompatActivity() {
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_favorite -> {
-                currentFragment = FavoriteEventFragment()
+                currentFragment = FavoriteFragment()
                 ft = supportFragmentManager.beginTransaction()
                 ft.replace(R.id.fl_main, currentFragment)
                 ft.commit()
