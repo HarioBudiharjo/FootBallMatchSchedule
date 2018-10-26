@@ -9,12 +9,12 @@
     tools:showIn="@layout/activity_detail_player">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/ivFanart"
         android:layout_width="0dp"
         android:layout_height="211dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:adjustViewBounds="false"
+        android:cropToPadding="false"
+        android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -24,47 +24,58 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         android:text="TextView"
-        tools:layout_editor_absoluteX="49dp"
-        tools:layout_editor_absoluteY="235dp" />
+        app:layout_constraintEnd_toEndOf="@+id/tvDescription"
+        app:layout_constraintStart_toStartOf="@+id/tvDescription"
+        app:layout_constraintTop_toBottomOf="@+id/ivFanart" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="67dp"
         android:text="TextView"
-        tools:layout_editor_absoluteX="259dp"
-        tools:layout_editor_absoluteY="235dp" />
+        app:layout_constraintEnd_toEndOf="@+id/ivFanart"
+        app:layout_constraintTop_toBottomOf="@+id/ivFanart" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/tvWeight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:text="TextView"
-        tools:layout_editor_absoluteX="49dp"
-        tools:layout_editor_absoluteY="284dp" />
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/tvHeight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="2dp"
         android:text="TextView"
-        tools:layout_editor_absoluteX="257dp"
-        tools:layout_editor_absoluteY="284dp" />
+        app:layout_constraintEnd_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/tvPosition"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="38dp"
+        android:layout_marginEnd="37dp"
         android:text="TextView"
-        tools:layout_editor_absoluteX="162dp"
-        tools:layout_editor_absoluteY="341dp" />
+        app:layout_constraintEnd_toStartOf="@+id/tvHeight"
+        app:layout_constraintTop_toBottomOf="@+id/tvHeight" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/tvDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="49dp"
+        android:layout_marginBottom="108dp"
         android:text="TextView"
-        tools:layout_editor_absoluteX="49dp"
-        tools:layout_editor_absoluteY="384dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </android.support.constraint.ConstraintLayout>

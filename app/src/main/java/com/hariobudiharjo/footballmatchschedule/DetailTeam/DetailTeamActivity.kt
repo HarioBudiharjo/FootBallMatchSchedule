@@ -1,5 +1,6 @@
 package com.hariobudiharjo.footballmatchschedule.DetailTeam
 
+import android.app.ProgressDialog
 import android.os.Bundle
 import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
@@ -22,28 +23,28 @@ import kotlinx.android.synthetic.main.content_detail_team.*
 class DetailTeamActivity : AppCompatActivity(), DetailTeamView {
 
     override fun showLoading() {
-        Log.d("DEBUG Detail Team", "SHOW")
+        progress.show()
     }
 
     override fun hideLoading() {
-        Log.d("DEBUG Detail Team", "DISMISS")
+        progress.dismiss()
     }
 
     override fun showDetail(data: MutableList<teamModel>) {
         teams.addAll(data)
         Log.d("DEBUG Detail Team", teams.toString())
-
-
         Glide.with(this@DetailTeamActivity).load(teams[0].strTeamBadge).into(ivClubDetailTeam)
         tvNamaDetailTeam.text = teams[0].strTeam
         tvTahunDetailTeam.text = teams[0].intFormedYear
         tvStadiunDetailTeam.text = teams[0].strStadium
+        setupViewPager(viewPager, teams[0].strDescriptionEN.toString(), teams[0].idTeam.toString());
     }
 
     lateinit var tabLayout: TabLayout
     lateinit var viewPager: ViewPager
     private var teams: MutableList<teamModel> = mutableListOf()
     lateinit var presenter: DetailTeamPresenter
+    lateinit var progress: ProgressDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,7 +54,6 @@ class DetailTeamActivity : AppCompatActivity(), DetailTeamView {
         val idTeam = intent.getStringExtra("id")
 
         viewPager = findViewById(R.id.viewpager)
-        setupViewPager(viewPager);
 
         tabLayout = findViewById(R.id.tabs)
         tabLayout.setupWithViewPager(viewPager)
@@ -61,15 +61,42 @@ class DetailTeamActivity : AppCompatActivity(), DetailTeamView {
         val request = ApiMatch()
         val gson = Gson()
 
+        progress = ProgressDialog(this)
+        progress.setTitle("Loading")
+        progress.setMessage("Wait while loading...")
+        progress.setCancelable(false)
+
         presenter = DetailTeamPresenter(this, request, gson)
         presenter.getTeamDetail(idTeam)
+
+        getSupportActionBar()!!.setDisplayHomeAsUpEnabled(true)
+
+        toolbar.setNavigationOnClickListener {
+            onBackPressed()
+        }
     }
 
 
-    private fun setupViewPager(viewPager: ViewPager) {
+    private fun setupViewPager(viewPager: ViewPager, overView: String, idTeam: String) {
+
+        val bundleOverView = Bundle()
+        bundleOverView.putString("overview", overView)
+
+        val bundleTeam = Bundle()
+        bundleTeam.putString("idteam", idTeam)
+
         val adapter = ViewPagerAdapter(supportFragmentManager)
-        adapter.addFragment(OverviewFragment(), "Overview")
-        adapter.addFragment(PlayerTeamFragment(), "Player")
+//        adapter.addFragment(OverviewFragment(), "Overview")
+//        adapter.addFragment(PlayerTeamFragment(), "Player")
+
+        val overviewFragment = OverviewFragment()
+        val playerTeamFragment = PlayerTeamFragment()
+
+        overviewFragment.arguments = bundleOverView
+        playerTeamFragment.arguments = bundleTeam
+
+        adapter.addFragment(overviewFragment, "Overview")
+        adapter.addFragment(playerTeamFragment, "Player")
         viewPager.adapter = adapter
     }
 
