@@ -145,7 +145,6 @@ class DetailActivity : AppCompatActivity(), DetailView {
 
         }
         return balikan
-
     }
 
     private fun addToFavorite() {

@@ -13,6 +13,7 @@ data class matchModel(
         val homeScore: String? = "-",
         @SerializedName("intAwayScore")
         val awayScore: String? = "-",
+        val strTime: String?,
         val idHomeTeam: String?,
         val idAwayTeam: String?,
         val strHomeRedCards: String?,

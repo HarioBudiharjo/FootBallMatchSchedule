@@ -17,21 +17,28 @@
         <activity
             android:name=".Home.UtamaActivity"
             android:label="@string/title_activity_utama"
-            android:theme="@style/AppTheme">
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".DetailTeam.DetailTeamActivity"
             android:label="@string/title_activity_detail_team"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".DetailPlayer.DetailPlayerActivity"
             android:label="@string/title_activity_detail_player"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Search.Team.SearchTeamActivity"
+            android:label="@string/title_activity_search_team"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Search.Match.SearchMatchActivity"
+            android:label="@string/title_activity_search_match"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

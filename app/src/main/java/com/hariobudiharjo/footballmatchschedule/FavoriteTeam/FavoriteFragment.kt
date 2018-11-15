@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import com.hariobudiharjo.footballmatchschedule.Database.database
 import com.hariobudiharjo.footballmatchschedule.Model.favoriteModel
+import com.hariobudiharjo.footballmatchschedule.Model.favoriteTeamModel
 
 import com.hariobudiharjo.footballmatchschedule.R
 import org.jetbrains.anko.db.classParser
@@ -20,8 +21,8 @@ import org.jetbrains.anko.db.select
 class FavoriteTeamFragment : Fragment() {
 
 
-    private var favorites: MutableList<favoriteModel> = mutableListOf()
-    lateinit var adapter: RVFavoriteAdapter
+    private var favorites: MutableList<favoriteTeamModel> = mutableListOf()
+    lateinit var adapter: RVFavoriteTeamAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -38,14 +39,14 @@ class FavoriteTeamFragment : Fragment() {
         progress.show()
 
         context!!.database.use {
-            val result = select(favoriteModel.TABLE_FAVORITE)
-            val favorite = result.parseList(classParser<favoriteModel>())
+            val result = select(favoriteTeamModel.TABLE_FAVORITE_TEAM)
+            val favorite = result.parseList(classParser<favoriteTeamModel>())
             favorites.addAll(favorite)
         }
 
         progress.dismiss()
 
-        adapter = RVFavoriteAdapter(context!!, favorites)
+        adapter = RVFavoriteTeamAdapter(context!!, favorites)
         _recyclerView.adapter = adapter
 
 

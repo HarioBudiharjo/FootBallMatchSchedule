@@ -2,6 +2,7 @@ package com.hariobudiharjo.footballmatchschedule.PrevMatch
 
 import android.util.Log
 import com.google.gson.Gson
+import com.hariobudiharjo.footballmatchschedule.Model.eventResponse
 import com.hariobudiharjo.footballmatchschedule.Model.matchModel
 import com.hariobudiharjo.footballmatchschedule.Model.matchResponse
 import com.hariobudiharjo.footballmatchschedule.Network.ApiMatch
@@ -24,6 +25,41 @@ class PrevMatchPresenter(private val view: PrevMatchView,
                     matchResponse::class.java)
             matchs.clear()
             matchs.addAll(data.events)
+            Log.d("DEBUG", matchs.toString())
+
+            uiThread {
+                view.showDetail(matchs)
+                view.hideLoading()
+            }
+        }
+    }
+
+
+    fun getSearchEvent(match: String?) {
+        view.showLoading()
+        doAsync {
+            val data = gson.fromJson(apiRepository
+                    .doRequest("https://www.thesportsdb.com/api/v1/json/1/searchevents.php?e=$match"),
+                    eventResponse::class.java)
+            matchs.clear()
+            matchs.addAll(data.event)
+            Log.d("DEBUG", matchs.toString())
+
+            uiThread {
+                view.showDetail(matchs)
+                view.hideLoading()
+            }
+        }
+    }
+
+    fun getLeague(league: String?) {
+        view.showLoading()
+        doAsync {
+            val data = gson.fromJson(apiRepository
+                    .doRequest("https://www.thesportsdb.com/api/v1/json/1/searchfilename.php?e=$league"),
+                    eventResponse::class.java)
+            matchs.clear()
+            matchs.addAll(data.event)
             Log.d("DEBUG", matchs.toString())
 
             uiThread {

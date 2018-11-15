@@ -6,6 +6,7 @@ import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
+import android.support.v4.app.FragmentStatePagerAdapter
 import android.support.v4.view.ViewPager
 import android.view.LayoutInflater
 import android.view.View
@@ -28,17 +29,23 @@ class FavoriteFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
         viewku = inflater.inflate(R.layout.fragment_favorite2, container, false)
         viewPager = viewku.findViewById(R.id.viewpager)
-        setupViewPager(viewPager);
-
         tabLayout = viewku.findViewById(R.id.tabs)
-        tabLayout.setupWithViewPager(viewPager)
         return viewku
     }
 
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        setupViewPager(viewPager);
+        tabLayout.setupWithViewPager(viewPager)
+    }
+
     private fun setupViewPager(viewPager: ViewPager) {
-        val adapter = ViewPagerAdapter(fragmentManager!!)
-        adapter.addFragment(FavoriteEventFragment.favoriteMatchInstance(), "EVENT")
-        adapter.addFragment(FavoriteTeamFragment.favoriteTeamInstance(), "TEAM")
+//        val adapter = ViewPagerAdapter(fragmentManager!!)
+
+        val adapter = fragmentManager?.let { ViewPagerAdapter(it) }
+
+        adapter?.addFragment(FavoriteEventFragment.favoriteMatchInstance(), "EVENT")
+        adapter?.addFragment(FavoriteTeamFragment.favoriteTeamInstance(), "TEAM")
         viewPager.adapter = adapter
     }
 
@@ -46,7 +53,7 @@ class FavoriteFragment : Fragment() {
         fun matchInstance(): FavoriteFragment = FavoriteFragment()
     }
 
-    internal inner class ViewPagerAdapter(manager: FragmentManager) : FragmentPagerAdapter(manager) {
+    internal inner class ViewPagerAdapter(manager: FragmentManager) : FragmentStatePagerAdapter(manager) {
         private val mFragmentList = arrayListOf<Fragment>()
         private val mFragmentTitleList = arrayListOf<String>()
 

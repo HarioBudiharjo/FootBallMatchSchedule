@@ -15,11 +15,45 @@ class TeamPresenter(private val view: TeamView,
                     private val contextPool: CoroutineContextProvider = CoroutineContextProvider()) {
     private var matchs: MutableList<teamModel> = mutableListOf()
 
-    fun getNextMatchDetail() {
+    fun getTeam() {
         view.showLoading()
         doAsync {
             val data = gson.fromJson(apiRepository
                     .doRequest("https://www.thesportsdb.com/api/v1/json/1/lookup_all_teams.php?id=4328"),
+                    teamResponse::class.java)
+            matchs.clear()
+            matchs.addAll(data.teams)
+            Log.d("DEBUG", matchs.toString())
+
+            uiThread {
+                view.showDetail(matchs)
+                view.hideLoading()
+            }
+        }
+    }
+
+    fun getSearchTeam(team: String?) {
+        view.showLoading()
+        doAsync {
+            val data = gson.fromJson(apiRepository
+                    .doRequest("https://www.thesportsdb.com/api/v1/json/1/searchteams.php?t=$team"),
+                    teamResponse::class.java)
+            matchs.clear()
+            matchs.addAll(data.teams)
+            Log.d("DEBUG", matchs.toString())
+
+            uiThread {
+                view.showDetail(matchs)
+                view.hideLoading()
+            }
+        }
+    }
+
+    fun getLeague(league: String?) {
+        view.showLoading()
+        doAsync {
+            val data = gson.fromJson(apiRepository
+                    .doRequest("https://www.thesportsdb.com/api/v1/json/1/search_all_teams.php?l=$league"),
                     teamResponse::class.java)
             matchs.clear()
             matchs.addAll(data.teams)
